@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="auth-body">
+<nav>
+    <h2>Session Tracking System</h2>
+    <p>Harika P | 24WH1A05C8</p>
+</nav>
+<div class="center-container">
+
+    <div class="auth-card">
+
+        <h2>Login</h2>
+        <p id="successMsg" style="color: green; display: none;">
+    Registered successfully! Please login.
+</p>
+        <form method="POST" action="/login" onsubmit="return validateForm()">
+
+            <input type="text" name="username" placeholder="Username" required>
+
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <p>Don't have an account?</p>
+        <a href="/register">Register</a>
+
+    </div>
+
+</div>
+
+<script>
+
+
+function validateForm() {
+    let valid = true;
+
+    const inputs = document.querySelectorAll("input");
+
+    inputs.forEach(input => {
+        if (input.value.trim() === "") {
+            input.style.border = "2px solid red";
+            valid = false;
+        } else {
+            input.style.border = "1px solid #ccc";
+        }
+    });
+
+    return valid;
+}
+</script>
+<script>
+const params = new URLSearchParams(window.location.search);
+
+if (params.get("success") === "1") {
+    document.getElementById("successMsg").style.display = "block";
+}
+</script>
+
+</body>
+</html>

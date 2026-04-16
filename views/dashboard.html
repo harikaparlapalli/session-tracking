@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<nav>
+    <h2>Session Tracking System</h2>
+    <p>Harika P | 24WH1A05C8</p>
+</nav>
+
+<div class="main">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <a href="/dashboard" style="background:#7c3aed; color:white;">Dashboard</a>
+        <a href="/activity">Activity</a>
+        <a href="/cookie-test">Cookies</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <div class="card">
+            <p id="msg" style="color: green; display: none;"></p>
+            <h2>Welcome, {{username}}</h2>
+            <p style="color: gray;">Session is active</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Status</h3>
+                <p>Active</p>
+            </div>
+
+            <div class="card">
+                <h3>Activities</h3>
+                <p>{{activityCount}}</p>
+            </div>
+
+            <div class="card">
+                <h3>Login Time</h3>
+                <p>{{loginTime}}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const msg = document.getElementById("msg");
+
+if (params.get("registered") === "1") {
+    msg.innerText = "Registration successful!";
+    msg.style.display = "block";
+}
+
+if (params.get("login") === "1") {
+    msg.innerText = "Login successful!";
+    msg.style.display = "block";
+}
+</script>
+
+</body>
+</html>
